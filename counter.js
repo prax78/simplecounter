@@ -27,7 +27,7 @@
      
      }
 
-     function on_load_page(){
+     function display_last(){
         if(localStorage.getItem("l") != null){
             document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
             console.log(localStorage.getItem("l") )
