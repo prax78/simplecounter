@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+</head>
+<body style="background-color: black;text-align:center;" >
+    <div><ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" onclick="about_me()">About Me</button>
+        </li>      
+      </ul></div>
+      <div style="padding-top: 20%;width: auto;">
+        <div class="card" style="background-color: black;color: whitesmoke;">
+            <h5 class="card-header">A Simple Counter</h5>
+            <div class="card-body" style="font-size: x-large;">
+              <p class="card text-center" id="step" style="font-size: larger;background-color:#0080ff;color: wheat;font-weight: bolder;font-size: xx-large;">0</p>
+              <a  class="btn btn-primary rounded-5" style="width: 50%;"  onclick="add_step()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAChElEQVRYR92YgVHDMAxFmw1gAtIN6AZlAugEtBvQCaAT0E5AN6BMQJiAbkCZgG5Q/ufsuyS1YksxXA/d+cJRWX6RZFlOMThxKU6cb/C/AQ+HwxkicIlRYvDvC/f8xHPHURRF1SdKJg8CbIxFbzFuHFCMYQ2FN8DyqRIVoAN7dF5TLeSUt3jONV5NAnShJNjUQhWYswbkLMVWFNDBPblwpthM1aE3rwC675rQCejg3mGgTF1VqUe4ESB30jwR8Bc912bZAnBkAWTO3Sk9YlXfAHISmhz0oNutr8rVKuj7fGJKsD5qZALITXuCBEi4scY6dGe+zuEFWR+flfNZ1IdRQKNx2u0L2LDhQY88CEC+OT2glRyAR7kYAvwAGXNIKzkA9wjzeX3hBqBxc3h7OQBpq7FZ2oBTKPDUsEguQJ7Vy2AOwoOse6x/kvB4Wgk/Vv5EgB2myFjQYxck/cYpC9h5kADpPXpRErGgproc8Ko12iGOnR5/AdjodNqAdO19JMSLjhD/nCQuxNJJ4htdaZklQjyXQszwnvQmsRxR/mVz7WK5zLjwfOHJC5BWcgAyRYb1JjZ0ksR2mQSeAzDpqGON0rZahM4BeNRySe0W23xtP9cXcIc12f437igSIOEIqZEKylyEUmIwEhrhBYo2GtJ1J7G2XRooryteQ2O3OkuotYCd188YIMsN+0NL2UkBZb4xtIQMSurFnbtau2ligITirvV5awP0sxK6kBhQ/XduBsJ1flXghKgH61Zdx81CXmpoaroEW4Wul+YQhyYCdIr/X2OkXK7oJYbzBYO7Neq1+poqDwqwhPT56T9gMq/4EZNg/LShgsoKaAx18rTeHkxeyah48oDfnA8VOEMjtX0AAAAASUVORK5CYII="/></a>          
+              <br><br>
+              <a class="btn btn-primary rounded-5" style="width: 50%;" onclick="refresh()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAACK0lEQVRYR+2X4VECMRCFuQ7sQOzAEqACtQKhAqUCtQKhArEC6UA6kA48O7ADfI/ZdUJMLpvkZuTHZeaGgdvLfrx92eSa0YmP5sT5RgNgbYUGBQcFaxWofb7ag/v9/gwQE1xjXOe4+P0L165pms2/AQLsEskfBI5QsUHIBWDbEthsBUUxgs1ELWteQi6twRqXBShwL3j4OpDIV4gl98cOP0wB+m0FNQNG4JhohWuDpEz+O8QC/CNUW8cScQsrHONyAJ8Rf+9MTqC5D+YnF1Cqvs2FMwMiyQTB7x5cVqlyVHNjTQoC8A0Pqe9YVsIdlTQHAPMdKmFZNElA8d4n5tNWQr/d5AB53iQc7cKRXNkWQCpHBXVQvW0JoCincDpFJ+QRoBj6zks+xnd6kIPl9XeHVwtwBC4J+UdBTOSv1i6xTG0jAdcJGSyxEbJPuChk1IMJSCuc7tduFWgXXXDsBK1Xoie3Q3QukgikCS7kC/H4h3OPjX7d5SHLKnY9WQxHCAA+4sPd+i5Sp5wkoEx8aA0lW5WqE+in3PqmXeodcqYC+rgvcNwq6Ukdpn5aBCht4xaZkvtxBG4N9eaWP58NGOhpPISufC/JAeMK92bOqiUTFwV3D9OZMAswooYK4R8e3HJqTBZcsQeNO4NfwWy4YkBZ2dqEQ8d/F24rFih6w8sqccjUUnb1mb52tojlqydbSfG5sUpBywrsI6ZawT4guuYYAGsVHhQcFKxVoPb5HzlX0SlpINDiAAAAAElFTkSuQmCC"/></a>
+            </div>
+          </div>
+      </div>
+      <br>
+      <div>
+        <div class="card" style="background-color: black;color: whitesmoke;">
+            <h5 class="card-header" ></h5>
+            <div class="card-body" style="font-size: x-large;">
+              <p class="card text-center" id="last" style="background-color:#0080ff;color: wheat"></p>
+            
+            </div>
+          </div>
+      </div>
+      <script src="counter.js"></script>
+</body>
+</html>
