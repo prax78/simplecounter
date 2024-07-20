@@ -24,10 +24,12 @@
         if(data !=0){
             localStorage.setItem("l",`${data}`);
         }
+     
+     }
+
      function on_load_page(){
         if(localStorage.getItem("l") != null){
             document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
             console.log(localStorage.getItem("l") )
         }
-     }
      }
