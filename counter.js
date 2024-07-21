@@ -34,8 +34,30 @@
 
             //console.log(localStorage.getItem("l") )
         }
+        platform_img();
      }
+     
+      function platform_img(){
+       let os=navigator.userAgentData;
+       let src="";
+       switch(os.platform){
+        case 'Android':
+            src="Android-64x64.png";
+            break;
+        case 'Windows':
+            src="Microsoft-64x64.png";
+            break;
+        case 'Apple':
+            src="Apple-64x64.png";
+            break;
+        default:
+            src="Linux-64x64.png";
 
+       }
+       document.getElementById("platform").setAttribute("src",src);
+      console.log(src);
+      console.log(os.platform);
+      }
     //  function change_color(data){
     //     if(data=="up"){
     //         document.getElementById("btn1").style.backgroundColor="#0080ff";
