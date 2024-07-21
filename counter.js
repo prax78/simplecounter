@@ -39,11 +39,11 @@
      function change_color(data){
         if(data=="up"){
             document.getElementById("btn1").style.backgroundColor="#0080ff";
-            console.log(data);
+            //console.log(data);
 
         }else if(data=="down"){
             document.getElementById("btn1").style.backgroundColor="#E44C8C";
-            console.log(data);
+            //console.log(data);
         }
         else{
             document.getElementById("btn1").style.backgroundColor="#0080ff";
