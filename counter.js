@@ -30,6 +30,24 @@
      function display_last(){
         if(localStorage.getItem("l") != null){
             document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
-            console.log(localStorage.getItem("l") )
+            document.getElementById("last_tm").textContent=`${new Date().toLocaleDateString()}`; 
+
+            //console.log(localStorage.getItem("l") )
         }
+     }
+
+     function change_color(data){
+        if(data=="up"){
+            document.getElementById("btn1").style.backgroundColor="#0080ff";
+            console.log(data);
+
+        }else if(data=="down"){
+            document.getElementById("btn1").style.backgroundColor="#E44C8C";
+            console.log(data);
+        }
+        else{
+            document.getElementById("btn1").style.backgroundColor="#0080ff";
+ 
+        }
+        
      }
