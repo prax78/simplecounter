@@ -40,23 +40,20 @@
       function platform_img(){
        let os=navigator.userAgentData;
        let src="";
-       switch(os.platform){
-        case 'Android':
-            src="Android-64x64.png";
-            break;
-        case 'Windows':
-            src="Microsoft-64x64.png";
-            break;
-        case 'Apple':
-            src="Apple-64x64.png";
-            break;
-        default:
-            src="Linux-64x64.png";
-
+       if(new RegExp('^An').test(os.platform)){
+        src="Android-64x64.png";
+       }else if(new RegExp('^Wi').test(os.platform)){
+        src="Microsoft-64x64.png";
+       }else if(RegExp('[iI]|[mM]').test(os.platform))
+       {
+        src="Apple-64x64.png";
+       } else {
+        src="linux.png";
        }
+
        document.getElementById("platform").setAttribute("src",src);
       console.log(src);
-      console.log(os.platform);
+      console.log(new RegExp('^An').test(os.platform));
       }
     //  function change_color(data){
     //     if(data=="up"){
