@@ -1,4 +1,5 @@
-
+    try { var os=String(navigator.userAgentData.platform);}
+    catch(err){ console.log(err)}
     function about_me(){
         window.open("https://prakash78blog.wordpress.com/");
      
@@ -41,22 +42,25 @@
      }
      
       function platform_img(){
-       let os=navigator.userAgentData;
-       let src="";
-       if(new RegExp('^An').test(os.platform)){
-        src="Android-64x64.png";
-       }else if(new RegExp('^Wi').test(os.platform)){
-        src="Microsoft-64x64.png";
-       }else if(RegExp('[iI]|[mM]').test(os.platform))
-       {
-        src="Apple-64x64.png";
-       } else {
-        src="linux.png";
+       if(os != undefined){
+        document.getElementById("os").style.visibility="visible";
+        let src="";
+        if(new RegExp('^An').test(os)){
+         src="Android-64x64.png";
+        }else if(new RegExp('^Wi').test(os)){
+         src="Microsoft-64x64.png";
+        }else if(RegExp('[iI]|[mM]').test(os))
+        {
+         src="Apple-64x64.png";
+        } else {
+         src="linux.png";
+        }
+ 
+        document.getElementById("platform").setAttribute("src",src);
+       console.log(src);
+       console.log(os);
        }
-
-       document.getElementById("platform").setAttribute("src",src);
-      console.log(src);
-      console.log(new RegExp('^An').test(os.platform));
+  
       }
     //  function change_color(data){
     //     if(data=="up"){
