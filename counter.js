@@ -15,22 +15,25 @@
         document.getElementById("step").textContent=0;
      
         last_load(result);
-        if(localStorage.getItem("l") != null){
+        if(localStorage.getItem("l") != null && localStorage.getItem("d") != null){
             document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
+            document.getElementById("last_tm").textContent=`${localStorage.getItem("d")}`; 
+
         }
      }
 
      function last_load(data){
         if(data !=0){
             localStorage.setItem("l",`${data}`);
+            localStorage.setItem("d",`${new Date().toLocaleDateString()}`);
         }
      
      }
 
      function display_last(){
-        if(localStorage.getItem("l") != null){
+        if(localStorage.getItem("l") != null && localStorage.getItem("d") != null){
             document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
-            document.getElementById("last_tm").textContent=`${new Date().toLocaleDateString()}`; 
+            document.getElementById("last_tm").textContent=`${localStorage.getItem("d")}`; 
 
             //console.log(localStorage.getItem("l") )
         }
