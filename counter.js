@@ -8,9 +8,18 @@
     function add_step(){
 
         let step=Number(document.getElementById("step").textContent);
+
         document.getElementById("step").textContent=step+1;
     }
     
+    function sub_step(){
+
+        let step=Number(document.getElementById("step").textContent);
+        if(step!=0){
+            document.getElementById("step").textContent=step-1;
+        }
+        
+    }
      function refresh(){
         let result=Number(document.getElementById("step").textContent);
         document.getElementById("step").textContent=0;
