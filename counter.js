@@ -44,6 +44,7 @@
       function platform_img(){
        if(os != undefined){
         document.getElementById("os").style.visibility="visible";
+       
         let src="";
         if(new RegExp('^An').test(os)){
          src="Android-64x64.png";
@@ -53,12 +54,17 @@
         {
          src="Apple-64x64.png";
         } else {
+            document.getElementById("icon").style.visibility="visible";
          src="linux.png";
         }
  
         document.getElementById("platform").setAttribute("src",src);
        console.log(src);
        console.log(os);
+       }
+       else {
+        document.getElementById("icon").style.visibility="visible";
+        src="linux.png";
        }
   
       }
