@@ -1,3 +1,4 @@
+
     try { var os=String(navigator.userAgentData.platform);}
     catch(err){ console.log(err)}
     function about_me(){
@@ -25,28 +26,84 @@
         document.getElementById("step").textContent=0;
      
         last_load(result);
-        if(localStorage.getItem("l") != null && localStorage.getItem("d") != null){
-            document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
-            document.getElementById("last_tm").textContent=`${localStorage.getItem("d")}`; 
-
-        }
+           // document.getElementById("last").textContent=`Last ${Array(localStorage.getItem("l"))}`; 
+            //  console.log(`one ${localStorage.getItem("1")}`);
+            //  console.log(`one ${localStorage.getItem("2")}`);
+            //  console.log(`one ${localStorage.getItem("3")}`);
+             display_last();
+            //  document.getElementById("one").textContent=`1 ${localStorage.getItem("1")}`;
+            //  document.getElementById("two").textContent=`2 ${localStorage.getItem("2")}`;
+            //  document.getElementById("three").textContent=`3 ${localStorage.getItem("3")}`;
+            
+       
      }
-
+     function clear_data(){
+        localStorage.clear();
+        window.open("#");
+     }
      function last_load(data){
         if(data !=0){
-            localStorage.setItem("l",`${data}`);
-            localStorage.setItem("d",`${new Date().toLocaleDateString()}`);
+    
+            // localStorage.setItem("1","");
+            // localStorage.setItem("2","");
+            // localStorage.setItem("3","");
+            let one=localStorage.getItem("1");
+            let two=localStorage.getItem("2");
+            let three=localStorage.getItem("3");
+            console.log(one);
+            console.log(two);
+            console.log(three);
+            let counter_data=`counter:${data},date:${new Date().toLocaleDateString()}`;
+            if(one !="" && two !="" && three !=""){
+                // localStorage.setItem("1","");
+                // // localStorage.setItem("2","");
+                // // localStorage.setItem("3","");
+                tempone=localStorage.getItem("1");
+                temptwo=localStorage.getItem("2");
+                localStorage.setItem("1","");
+                localStorage.setItem("2",tempone);
+                localStorage.setItem("3",temptwo)
+            }
+            if(two==""){
+                localStorage.setItem("2",`${counter_data}`)
+            }else if(three==""){
+                localStorage.setItem("3",`${counter_data}`)
+            }else {
+                localStorage.setItem("1",`${counter_data}`)
+            }
+
+        //   let counter_data={'counter':`${data}`,date:`${new Date().toLocaleDateString()}`};
+        //   //localStorage.setItem("l",`${counter_data}`);  
+        // localStorage.getItem('arr').push(counter_data);
+        //   console.log(localStorage.getItem('arr'))         
+        //    // localStorage.setItem("l",`${counter_data}`);
+
+        //    // localStorage.setItem("d",`${new Date().toLocaleDateString()}`);
         }
      
      }
 
      function display_last(){
-        if(localStorage.getItem("l") != null && localStorage.getItem("d") != null){
-            document.getElementById("last").textContent=`Last ${localStorage.getItem("l")}`; 
-            document.getElementById("last_tm").textContent=`${localStorage.getItem("d")}`; 
+        let disone= localStorage.getItem("1");
+        let distwo=localStorage.getItem("2");
+        let disthree=localStorage.getItem("3");
+   
 
-            //console.log(localStorage.getItem("l") )
+        if(disone !='null'){
+            document.getElementById("one").textContent=disone;
+
         }
+        if(distwo !='null'){
+            document.getElementById("two").textContent=distwo;
+            
+        }
+        if(disthree !='null'){
+            document.getElementById("three").textContent=disthree;
+            
+        }
+           
+           
+  
         platform_img();
      }
      
@@ -77,6 +134,8 @@
        }
   
       }
+
+ 
     //  function change_color(data){
     //     if(data=="up"){
     //         document.getElementById("btn1").style.backgroundColor="#0080ff";
