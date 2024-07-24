@@ -32,7 +32,8 @@ function sub_step(){
         //console.log(localStorage.getItem(`local_${x}`));
         let test=document.createElement("p");
         test.id=`p_${x}`;
-       // console.log(test);
+     
+          // console.log(test);
         document.getElementById("data").appendChild(test);
         document.getElementById(`${test.id}`).textContent=localStorage.getItem(`local_${x}`);
     }
@@ -84,7 +85,14 @@ function sub_step(){
         let test=document.createElement("p");
         test.id=`p_${x}`;
         test.className="card text-center";
-        test.style="background-color:#0080ff;color: wheat";
+        test.style.color="white";
+  
+        if(x%2==0){
+            test.style.backgroundColor="#993366";
+        }else{
+            test.style.backgroundColor="#0080ff";   
+        }
+       // test.style="background-color:#0080ff;color: wheat";
        // console.log(test);
         document.getElementById("data").appendChild(test);
         document.getElementById(`${test.id}`).textContent=localStorage.getItem(`local_${x}`);
