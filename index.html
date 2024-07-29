@@ -8,6 +8,28 @@
     
     <style>
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse:collapse;
+  width:fit-content;
+}
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  background-color:#064E75 ;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  background-color: #ad3434;
+}
+
 
 .bungee-spice-regular {
 
@@ -58,8 +80,14 @@
               <!-- <p class="card text-center" id="one" style="background-color:#0080ff;color: wheat"></p>
               <p class="card text-center" id="two" style="background-color:#0080ff;color: wheat"></p>
               <p class="card text-center" id="three" style="background-color:#0080ff;color: wheat"></p> -->
-              <div id="data">
-                
+              <div class="card-body center" id="data">
+                <table id="data_table" class="center">
+             
+                  <tr>
+                    <th>Counts</th>
+                    <th>Date</th>                
+                  </tr>
+                </table>
               </div>
               <a class="btn btn-primary" onclick="clear_data()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAFxAAABcQG7iuH0AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAj5JREFUeJzt2j1rFUEUh/GfEo0kRiFKsJCAQkALK7Gxs7LQwsJC0mjsLfINLCyt/AYpxMaAhSls0kRJEQU/gChKClESfEnAvEgsdouYrLk7ubsZMOeBgd3LOTMPf/YOCzsEQRAEQRC0yx0sYaPmWMLtvRA7sBeL4A368axm/Q0s42JrRiWpAVzHVRxO7LuJQ5ivWX8aa3iauM4qXuB53YaUAEbxGAv4nubllCKAFNbwObHnOE4oXJ8k9nZkEu/Q0/TEDdKjcJys23AwYfI+fMV6otResq5w7KvbkBLAf0nq43wBr3EGR5rX6Ypf+IBzmKnblBLADH6W12cVT89iQn+bDCo29PfleNv2gnOYanuRBKYUTsns+z0gAmhwrlF8rBhDFbUPK+peVdQN/WPO0aakmwxgAMOYxbTitXdY9UZ7UrFxTZdjVfH6u5Weco75sm62vB9oSrqNv8A4xjDRoW6hrBvDyw61E2XdeNd2W4g9ILdAbiKA3AK5iQByC+QmAsgtkJsIILdAbiKA3AK5iQByC+QmAsgtkJsIILdAbiKA3AK5iQByC+QmAsgtkJsIILdAbto48HQXP3C5Q90A7pXX5zvUXkEvjnWntp02AnhQs24Qjzbdf9qh9lY5Gme3J0Xn8AXXNv3Wi6MVtYuK46+b6bf9jNFvfKvwG6yYcwkrm+6nFJ/SL+1oXUGTT8CKv6V2YrkcndhQfEVujdgEu+gdwf2GPLplRPrx3a6YU//o+16NXZ0SC4IgCIJg//IHeOmGdyWVm4gAAAAASUVORK5CYII="/></a>
               <br>
@@ -70,6 +98,7 @@
           </div>
       </div>
       <p><a href="https://www.flaticon.com/free-icons/linux" title="linux icons" id="icon" style="visibility: hidden;">Linux icons created by Freepik - Flaticon</a>m</p>
-      <script src="new_counter.js" content-type="text/javascript"></script>
-</body>
+      <script src="counter.js" content-type="text/javascript"></script>
+
+    </body>
 </html>

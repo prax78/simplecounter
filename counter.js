@@ -1,153 +1,126 @@
 
-    try { var os=String(navigator.userAgentData.platform);}
-    catch(err){ console.log(err)}
-    function about_me(){
-        window.open("https://prakash78blog.wordpress.com/");
-     
-    }
+try { var os=String(navigator.userAgentData.platform);}
+catch(err){ console.log(err)}
+function about_me(){
+    window.open("https://prakash78blog.wordpress.com/");
+ 
+}
 
-    function add_step(){
+function add_step(){
 
-        let step=Number(document.getElementById("step").textContent);
+    let step=Number(document.getElementById("step").textContent.replace(',',''));
+    step=step+1;
+    
+    document.getElementById("step").textContent=step.toLocaleString();
+}
 
-        document.getElementById("step").textContent=step+1;
+function sub_step(){
+
+    let step=Number(document.getElementById("step").textContent.replace(',',''));
+    if(step!=0){
+        step=step-1;
+        document.getElementById("step").textContent=step.toLocaleString();
     }
     
-    function sub_step(){
+}
+ function refresh(){
+    let result=Number(document.getElementById("step").textContent.replace(',',''));
+    document.getElementById("step").textContent=0;
+ 
+    last_load(result);
+    location.reload();   
+  
+ }
+ function clear_data(){
+    localStorage.clear();
+    location.reload();
+ }
 
-        let step=Number(document.getElementById("step").textContent);
-        if(step!=0){
-            document.getElementById("step").textContent=step-1;
-        }
-        
-    }
-     function refresh(){
-        let result=Number(document.getElementById("step").textContent);
-        document.getElementById("step").textContent=0;
-     
-        last_load(result);
-           // document.getElementById("last").textContent=`Last ${Array(localStorage.getItem("l"))}`; 
-            //  console.log(`one ${localStorage.getItem("1")}`);
-            //  console.log(`one ${localStorage.getItem("2")}`);
-            //  console.log(`one ${localStorage.getItem("3")}`);
-             display_last();
-            //  document.getElementById("one").textContent=`1 ${localStorage.getItem("1")}`;
-            //  document.getElementById("two").textContent=`2 ${localStorage.getItem("2")}`;
-            //  document.getElementById("three").textContent=`3 ${localStorage.getItem("3")}`;
-            
+ function last_load(data){
+    if(data !=0){
+       let temp_arr=[];
+        let arr_len=Number(localStorage.getItem('arr_l'));
        
-     }
-     function clear_data(){
-        localStorage.clear();
-        window.open("#");
-     }
-     function last_load(data){
-        if(data !=0){
-    
-            // localStorage.setItem("1","");
-            // localStorage.setItem("2","");
-            // localStorage.setItem("3","");
-            let one=localStorage.getItem("1");
-            let two=localStorage.getItem("2");
-            let three=localStorage.getItem("3");
-            console.log(one);
-            console.log(two);
-            console.log(three);
-            let counter_data=`counter:${data},date:${new Date().toLocaleDateString()}`;
-            if(one !="" && two !="" && three !=""){
-                // localStorage.setItem("1","");
-                // // localStorage.setItem("2","");
-                // // localStorage.setItem("3","");
-                tempone=localStorage.getItem("1");
-                temptwo=localStorage.getItem("2");
-                localStorage.setItem("1","");
-                localStorage.setItem("2",tempone);
-                localStorage.setItem("3",temptwo)
+        if(localStorage.getItem("local_0")!=""){
+            for(let x=0;x<arr_len;x++){
+                    temp_arr[x]=localStorage.getItem(`local_${x}`);
             }
-            if(two==""){
-                localStorage.setItem("2",`${counter_data}`)
-            }else if(three==""){
-                localStorage.setItem("3",`${counter_data}`)
-            }else {
-                localStorage.setItem("1",`${counter_data}`)
+            localStorage.setItem("local_0",`Count: ${data}, ${new Date().toLocaleDateString()}`);
+            for(let y=0;y<arr_len-1;y++){
+                let temp_d=temp_arr[y]==null?"Empty":temp_arr[y];
+                localStorage.setItem(`local_${y+1}`,`${temp_d}`);
             }
+          }else {
+            localStorage.setItem("local_0",`Count: ${data}, ${new Date().toLocaleDateString()}`);
+            ;
+          }   
+         
 
-        //   let counter_data={'counter':`${data}`,date:`${new Date().toLocaleDateString()}`};
-        //   //localStorage.setItem("l",`${counter_data}`);  
-        // localStorage.getItem('arr').push(counter_data);
-        //   console.log(localStorage.getItem('arr'))         
-        //    // localStorage.setItem("l",`${counter_data}`);
+    }
+ }
 
-        //    // localStorage.setItem("d",`${new Date().toLocaleDateString()}`);
-        }
-     
-     }
+ function display_last(){
 
-     function display_last(){
-        let disone= localStorage.getItem("1");
-        let distwo=localStorage.getItem("2");
-        let disthree=localStorage.getItem("3");
+    localStorage.setItem('arr_l','5');
+    let arr_len=Number(localStorage.getItem('arr_l'));
    
+    for(let x=0;x<arr_len;x++){
 
-        if(disone !='null'){
-            document.getElementById("one").textContent=disone;
+        if(localStorage.getItem("local_0")==null){
+          
+            localStorage.setItem(`${`local_${x}`}`,"");
+        }
+    }
+    let table_el=document.getElementById("data_table");
+   
+    for(let x=0;x<arr_len;x++){
+        table_tr=table_el.appendChild(document.createElement("tr"));
+        if(localStorage.getItem(`local_${x}`)!="" && localStorage.getItem(`local_${x}`)!="Empty" && localStorage.getItem(`local_${x}`)!=null){  
+            let temp_str= localStorage.getItem(`local_${x}`).split(',');        
+            table_td_one=table_tr.appendChild(document.createElement("td"));
+            table_td_one.textContent=Number(temp_str[0].replace('Count:','')).toLocaleString();
+            table_td_two=table_tr.appendChild(document.createElement("td"));
+            table_td_two.textContent=temp_str[1];
+            table_td_three=table_tr.appendChild(document.createElement("td"));
+            del_button=table_td_three.appendChild(document.createElement("button"));
+            del_button.textContent="del";
+            del_button.style.backgroundColor="#9A2999";
+            del_button.style.color="white";
+            del_button.onclick=(()=>{localStorage.setItem(`local_${x}`,"");location.reload()});
+        }
 
-        }
-        if(distwo !='null'){
-            document.getElementById("two").textContent=distwo;
-            
-        }
-        if(disthree !='null'){
-            document.getElementById("three").textContent=disthree;
-            
-        }
-           
-           
-  
-        platform_img();
-     }
-     
-      function platform_img(){
-       if(os != undefined){
-        document.getElementById("os").style.visibility="visible";
-       
-        let src="";
-        if(new RegExp('^An').test(os)){
-         src="Android-64x64.png";
-        }else if(new RegExp('^Wi').test(os)){
-         src="Microsoft-64x64.png";
-        }else if(RegExp('[iI]|[mM]').test(os))
-        {
-         src="Apple-64x64.png";
-        } else {
-            document.getElementById("icon").style.visibility="visible";
-         src="linux.png";
-        }
+    }
+
+    platform_img();
+ }
  
-        document.getElementById("platform").setAttribute("src",src);
-       console.log(src);
-       console.log(os);
-       }
-       else {
+  function platform_img(){
+
+   if(os != undefined || os !=""){
+    document.getElementById("os").style.visibility="visible";
+   
+    let src="";
+    if(new RegExp('^An').test(os)){
+     src="Android-64x64.png";
+    }else if(new RegExp('^Wi').test(os)){
+     src="Microsoft-64x64.png";
+    }else if(RegExp('[iI]|[mM]').test(os))
+    {
+     src="Apple-64x64.png";
+    } else {
         document.getElementById("icon").style.visibility="visible";
-        src="linux.png";
-       }
+     src="linux.png";
+    }
+
+    document.getElementById("platform").setAttribute("src",src);
+   console.log(src);
+   console.log(os);
+   }
+   else {
+    document.getElementById("icon").style.visibility="visible";
+    src="linux.png";
+   }
+
+  }
+
   
-      }
-
- 
-    //  function change_color(data){
-    //     if(data=="up"){
-    //         document.getElementById("btn1").style.backgroundColor="#0080ff";
-    //         //console.log(data);
-
-    //     }else if(data=="down"){
-    //         document.getElementById("btn1").style.backgroundColor="#E44C8C";
-    //         //console.log(data);
-    //     }
-    //     else{
-    //         document.getElementById("btn1").style.backgroundColor="#0080ff";
- 
-    //     }
-        
-    //  }
