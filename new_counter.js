@@ -8,16 +8,18 @@ function about_me(){
 
 function add_step(){
 
-    let step=Number(document.getElementById("step").textContent);
-
-    document.getElementById("step").textContent=(step+1).toLocaleString(undefined);
+    let step=Number(document.getElementById("step").textContent.replace(',',''));
+    step=step+1;
+    console.log(step)
+    document.getElementById("step").textContent=step.toLocaleString();
 }
 
 function sub_step(){
 
-    let step=Number(document.getElementById("step").textContent);
+    let step=Number(document.getElementById("step").textContent.replace(',',''));
     if(step!=0){
-        document.getElementById("step").textContent=(step-1).toLocaleString(undefined);
+        step=step-1;
+        document.getElementById("step").textContent=step.toLocaleString();
     }
     
 }
