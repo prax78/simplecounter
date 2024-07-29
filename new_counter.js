@@ -10,7 +10,7 @@ function add_step(){
 
     let step=Number(document.getElementById("step").textContent.replace(',',''));
     step=step+1;
-    console.log(step)
+    
     document.getElementById("step").textContent=step.toLocaleString();
 }
 
