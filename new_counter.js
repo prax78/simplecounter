@@ -24,7 +24,7 @@ function sub_step(){
     
 }
  function refresh(){
-    let result=Number(document.getElementById("step").textContent);
+    let result=Number(document.getElementById("step").textContent.replace(',',''));
     document.getElementById("step").textContent=0;
  
     last_load(result);
@@ -33,11 +33,16 @@ function sub_step(){
     for(let x=0;x<arr_len;x++){
         //console.log(localStorage.getItem(`local_${x}`));
         let test=document.createElement("p");
+       
         test.id=`p_${x}`;
-     
-          // console.log(test);
+ 
+    
+          //console.log(test);
         document.getElementById("data").appendChild(test);
         document.getElementById(`${test.id}`).textContent=localStorage.getItem(`local_${x}`);
+        let del=document.getElementById(test.id).appendChild(document.createElement("button"));
+        del.style.color="red";
+        del.style.backgroundColor="red";
     }
   
  }
