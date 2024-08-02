@@ -61,7 +61,7 @@ function sub_step(){
 
  function display_last(){
 
-    localStorage.setItem('arr_l','5');
+    localStorage.setItem('arr_l','7');
     let arr_len=Number(localStorage.getItem('arr_l'));
    
     for(let x=0;x<arr_len;x++){
