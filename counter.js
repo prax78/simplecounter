@@ -5,15 +5,26 @@ function about_me(){
     window.open("https://prakash78blog.wordpress.com/");
  
 }
+function combinedDate(){
+    const d=new Date()
+    return `${d.getDate()}${d.getMonth()}${d.getDay()}`
+    
+}
 
+function reset(){
+    document.getElementById("step").textContent=0;
+    localStorage.setItem('data','0')
+}
 function add_step(){
     if(document.getElementById("stopwatch").style.visibility=="hidden"){
         document.getElementById("stopwatch").style.visibility="visible";
         stopwatch_start();
     }
+        let step=Number(document.getElementById("step").textContent.replace(',',''));
 
-
-    let step=Number(document.getElementById("step").textContent.replace(',',''));
+    
+     step=Number(document.getElementById("step").textContent.replace(',',''));
+    
     step=step+1;
     
     document.getElementById("step").textContent=step.toLocaleString();
@@ -67,9 +78,26 @@ function sub_step(){
  }
 
  function display_last(){
-
+    if(localStorage.getItem('data')==null){
+        setInterval(()=>{
+            localStorage.setItem('data',document.getElementById("step").textContent);
+            console.log(localStorage.getItem('data'))
+            },5000)
+    }else{
+        if(document.getElementById("step").textContent.startsWith("0")){
+            document.getElementById("step").textContent=localStorage.getItem('data');
+            setInterval(()=>{
+            localStorage.setItem('data',document.getElementById("step").textContent);
+            console.log(localStorage.getItem('data'))
+            },5000)
+        }
+    }
+    
+        
+    
     localStorage.setItem('arr_l','7');
     localStorage.setItem("clk",`00:00:00`);
+
     let arr_len=Number(localStorage.getItem('arr_l'));
    
     for(let x=0;x<arr_len;x++){
