@@ -81,14 +81,14 @@ function sub_step(){
     if(localStorage.getItem('data')==null){
         setInterval(()=>{
             localStorage.setItem('data',document.getElementById("step").textContent);
-            console.log(localStorage.getItem('data'))
+           // console.log(localStorage.getItem('data'))
             },5000)
     }else{
         if(document.getElementById("step").textContent.startsWith("0")){
             document.getElementById("step").textContent=localStorage.getItem('data');
             setInterval(()=>{
             localStorage.setItem('data',document.getElementById("step").textContent);
-            console.log(localStorage.getItem('data'))
+          //  console.log(localStorage.getItem('data'))
             },5000)
         }
     }
